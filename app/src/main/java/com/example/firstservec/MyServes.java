@@ -15,6 +15,7 @@ Thread sound ;
     public void onCreate() {
         super.onCreate();
         Toast.makeText(getApplicationContext(), "on create" , Toast.LENGTH_LONG).show();
+        hashCode()
     }
 
     @Nullable
