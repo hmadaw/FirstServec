@@ -14,25 +14,30 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import java.lang.reflect.Field;
+
 public class MyServes extends Service {
     ;
     private static final String CHANNEL_ID = "channel_id_1";
     MediaPlayer mediaPlayer;
 Thread sound ;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        createNotificationChannel();
+
         Intent notificationIntent =  new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                0, notificationIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this, 0, notificationIntent, 0);
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("music")
-                .setContentText(getResources().getResourceName(R.raw.abo))
+                .setContentText(getResources().getResourceEntryName(R.raw.abo))
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pendingIntent)
                 .build();
 
-        createNotificationChannel();
 
         startForeground(1,notification);
         Toast.makeText(getApplicationContext(), "on create" , Toast.LENGTH_LONG).show();
