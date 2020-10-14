@@ -17,8 +17,8 @@ import androidx.core.app.NotificationCompat;
 import java.lang.reflect.Field;
 
 public class MyServes extends Service {
-    ;
-    private static final String CHANNEL_ID = "channel_id_1";
+
+    private static final String CHANNEL_ID = "music channel";
     MediaPlayer mediaPlayer;
 Thread sound ;
 
@@ -35,6 +35,7 @@ Thread sound ;
                 .setContentTitle("music")
                 .setContentText(getResources().getResourceEntryName(R.raw.abo))
                 .setSmallIcon(R.drawable.ic_launcher_background)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .build();
 
